@@ -91,6 +91,13 @@ Run the samples app (must be in the Box3D directory).
 - cmake --build . --config Release
 - cmake --install . (might need sudo)
 
+## Web spike
+
+- The browser demo lives in [`web/`](web/).
+- Build the wasm target with Emscripten so `web/public/wasm/box3d-web.js` exists.
+- Then run `npm install` and `npm run dev` from `web/`.
+- The sample auto-starts and renders a small stack of boxes in Three.js.
+
 ## Using Box3D in your project
 
 The core library has no dependencies beyond the C runtime (and `libm` on Unix). Linking it

@@ -13,3 +13,7 @@ CMakeUserPresets.json
 .fetchcontent-cache/
 build-dp/
 *.b3rec
+build-web/
+web/dist/
+web/node_modules/
+web/public/wasm/box3d-web.js

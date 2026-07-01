@@ -131,9 +131,9 @@ if(PROJECT_IS_TOP_LEVEL)
 			string(APPEND CMAKE_C_FLAGS " ${EMSCRIPTEN_PTHREADS_COMPILER_FLAGS}")
 			string(APPEND CMAKE_CXX_FLAGS " ${EMSCRIPTEN_PTHREADS_COMPILER_FLAGS}")
 			string(APPEND CMAKE_EXE_LINKER_FLAGS " ${EMSCRIPTEN_PTHREADS_LINKER_FLAGS}")
+		else()
+			add_subdirectory(shared)
 		endif()
-
-		add_subdirectory(shared)
 	endif()
 
 	# Tests need static linkage because they test internal Box3D functions
@@ -145,7 +145,7 @@ if(PROJECT_IS_TOP_LEVEL)
 		message(STATUS "Skipping Box3D unit tests")
 	endif()
 
-	if(BOX3D_SAMPLES)
+	if(BOX3D_SAMPLES AND NOT EMSCRIPTEN)
 		add_subdirectory(samples)
 
 		# default startup project for Visual Studio
@@ -166,6 +166,10 @@ if(PROJECT_IS_TOP_LEVEL)
 
 	if(BOX3D_DOCS)
 		add_subdirectory(docs)
+	endif()
+
+	if(EMSCRIPTEN)
+		add_subdirectory(web/wasm)
 	endif()
 endif()
 
